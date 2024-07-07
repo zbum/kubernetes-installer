@@ -111,7 +111,7 @@ echo "**** init cluster ****"
 echo 
 
 sudo kubeadm config images pull
-sudo kubeadm init
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 
 
 mkdir -p $HOME/.kube 
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -141,10 +141,6 @@ echo
 curl -L https://git.io/get_helm.sh | bash
 
 helm init
-
-kubectl create serviceaccount --namespace kube-system tiller
-kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 
 echo 
 echo "**** view status cluster ****"
