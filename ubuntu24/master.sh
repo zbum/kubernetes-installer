@@ -148,6 +148,13 @@ echo
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 echo 
+echo "*** install metrics-server ***"
+echo
+
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+helm upgrade --install metrics-server metrics-server/metrics-server --version 3.13.0 -f metric-server-base-value.yaml -n kube-system
+
+echo 
 echo "**** view status cluster ****"
 echo
 
