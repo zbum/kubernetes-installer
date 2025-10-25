@@ -145,9 +145,7 @@ echo
 echo "**** install helm ****"
 echo 
 
-curl -L https://git.io/get_helm.sh | bash
-
-helm init
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 echo 
 echo "**** view status cluster ****"
