@@ -114,7 +114,7 @@ echo "**** init cluster ****"
 echo 
 
 sudo kubeadm config images pull
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --control-plane-endpoint="k8sm:6443"
 
 mkdir -p $HOME/.kube 
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
